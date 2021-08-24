@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %} درس های موجود در دانشگاه {% endblock %}
+{% block content %}
+{% include 'partials/_topbar.html' %}
+<section>
+    <div class="container">
+        <div class="row my-4">
+            <div class="card-header my-4">
+                <strong> کلاس ها </strong><p>همه درس ها</p>
+            </div>
+    {% if dars %}
+        {% for darsa in dars %}
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card my-2 border-2 border-success" style="background: #cfc; height: 410px; padding-inline: 10px;">
+                   <p class="text-center text-dark">نام درس : {{ darsa.name }}</p>
+                   <p class="text-danger">کد درس : {{ darsa.cd_dars }}</p>
+                   <p class="text-secondary">گروه اموزشی : {{ darsa.for_group }}</p>
+                   <p class="text-secondary">تعداد واحد : {{ darsa.count_vahed }}</p>
+                   <p class="text-secondary"> روز برگزاری: {{ darsa.days }}</p>
+                   <p class="text-secondary">زمان شروع کلاس : {{ darsa.time_shoro }}</p>
+                   <p class="text-secondary">زمان اتمام : {{ darsa.time_etmam }}</p>
+                   {% for cla in class %}
+                    {% if cla == darsa.class_bargozari %}
+                        <p><strong> کلاس برگزاری:</strong> {{ cla.number_class }}</p>
+                        <p> ساختمان اموزشی : {{ cla.sakhteman_amozeshi }}</p>
+                        <p>ظرفیت کلاس : {{ cla.zarfit_class }}</p>
+
+                    {% endif %}
+                   {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>هیچ درسی یافت نشد</p>
+    {% endif %}    
+        </div> 
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row my-3">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+          <div class="container-fluid">
+            <a class="navbar-brand">پروژه حسن مهربان</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item active">
+                  <a class="nav-link" aria-current="page" href="{% url 'logout' %}"> خروج از حساب کاربری</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" aria-current="page" href="{% url 'groupadmin' %}">درباره مدیر گروه </a>
+                </li>
+                
+                <li class="nav-item active">
+                  <a class="nav-link" aria-current="page" href="{% url 'groups' %}">گروه های اموزشی</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+  </div>
+  
+</div>

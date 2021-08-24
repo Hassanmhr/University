@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'partials/_topbar.html' %}
+<section>
+<div class="container">
+    <div class="row my-4">
+        <div class="card-header my-4">
+            <strong> درس و کلاس های گروه اموزشی</strong><i> {{ dars.for_group }} </i>
+        </div>
+        {% if dars %}
+        {% for drs in dars %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card my-3 border-2 border-info " style="padding-inline: 10px; background: #cff; height: 460px;">
+                <p class="text-center text-body"> نام درس : <b>{{ drs.name }}</b></p>
+                <p class="text-secondary">کد درس : {{ drs.cd_dars }}</p>
+                <p class="text-secondary">گروه اموزشی : {{ drs.for_group }}</p>
+                <p class="text-secondary">تعداد واحد : {{ drs.count_vahed }}</p>
+                <p class="text-secondary"> روز برگزاری: {{ drs.days }}</p>
+                <p class="text-secondary">زمان شوع کلاس : {{ drs.time_shoro }}</p>
+                <p class="text-secondary">زمان اتمام : {{ drs.time_etmam }}</p>
+                {% for cla in clas %}
+                    {% if cla == drs.class_bargozari %}
+                        <p class="text-danger"><strong> کلاس برگزاری:</strong> {{ cla.number_class }}</p>
+                        <p> ساختمان اموزشی : {{ cla.sakhteman_amozeshi }}</p>
+                        <p class="text-dark">ظرفیت کلاس : {{ cla.zarfit_class }} <small>   نفر  </small></p>
+                        <small>توضیحات در مورد کلاس : <i>{{ cla.description_class }}</i></small>
+                    {% endif %}
+                   {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>هیچ درسی برای این گروه اموزشی وارد نشده</p>
+        {% endif %}
+    </div>
+</div>
+</section>
+{% endblock %}

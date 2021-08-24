@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+   {% load pwa %} 
+<head>
+    {% progressive_web_app_meta %}
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/bootstrap.rtl.min.css' %}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+</head>
+<body>
+    
+
+    {% block content %} {% endblock %}
+    {% include 'partials/_footer.html' %}
+    
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/seviceworker.js' %}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}  گروه های اموزشی  {% endblock %}
+{% block content %}
+{% include 'partials/_topbar.html' %}
+<section>
+    <div class="container">
+        <div class="row my-4">
+            <div class="modal-body">
+                <!-- alerts -->
+                {% include 'partials/_alerts.html' %}</div>
+            <div class="card-header my-5">
+                {% if username %}
+                <strong>   {{ username }}  </strong>
+                {% endif %} 
+                <a href="{% url 'classes' %}"> نمایش تمام کلاس ها </a>
+            </div>
+
+            {% if groups %}
+                {% for group in groups %}
+                <div class="col-lg-4 col-md-6 col-sm-12 ">
+                    <div class="card my-2 border-2 border-secondary " style="background: #fcf; height: 350px; padding: 10px;">
+                        <p class="text-center text-dark"> گروه اموزشی :<strong> {{ group }}</strong></p>
+                        <p class="text-wrap"><strong> مقطع اموزشی :</strong> {{ group.status }}</p>
+                        <p class="text-hide"><strong> مدیر گروه : </strong>  {{group.modir_groh}} </p>
+                        <div class=" row " style="height: 140px;"><p class="text-black-50">توضیحات :<small>{{group.description}}</small></p></div>
+                        <p class="text-muted">کد گروه اموزشی :{{ group.code_groh }}</p>
+                        <a href="{% url 'clas' group.id %}" class="btn btn-sm btn-outline-danger my-3">جزئیات درس های گروه اموزشی</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="col-md-12">هیچ گروه اموزشی یافت نشد</div>
+            {% endif %}
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

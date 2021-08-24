@@ -1,0 +1,17 @@
+{
+    "name": "MehrabanProject",
+    "short_name": "mehraban",
+    "theme_color": "#ffcbe4",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "http://127.0.0.1:8000/",
+    "description": "mehraban projact PWA",
+    "orientation": "any",
+    "icons" : [
+        {
+            "src": "static/img/icon.png",
+            "sizes": "160x160"
+        }
+    ]
+}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ورود به سایت {% endblock %}
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row" >
+          <div class="modal-body">
+          <!-- alerts -->
+          {% include 'partials/_alerts.html' %}</div>
+
+          <div class="col-lg-3"></div>
+          <div class="col-lg-6  " >
+            <form action="{% url 'login' %}" method="POST" class="my-4">
+              {% csrf_token %}
+
+              <div class="card card-body border-4 border-primary" style="background: #efd;">
+                
+                <h1 class="h4 mb-4 fw-normal">ورود به سیستم </h1>
+
+                <div class="form-group my-3">
+                  <label for="username">  نام کاربری</label>
+                  <input name="username" id="username" type="text" class="form-control"placeholder="نام کاربری خود را وارد کنید" required>
+                </div>
+
+                <div class="form-group my-3">
+                  <label for="inputPassword">گذر واژه </label>
+                  <input name="password" type="password" id="inputPassword" class="form-control" placeholder="گذر واژه" required>
+                </div>
+
+                <div class="form-group my-3">
+                  <label for="che">گروه اموزشی</label>
+                  <select name="groupedu" id="che" class="form-control" required>
+                    <option ></option>
+                    {% if groups %}
+                    {% for group in groups %}
+                    <option value="{{group.name}}">{{group.name}}</option>
+                    {% endfor %}
+                    {% else %}
+                      <option>هیچ گروهی یافت نشد </option>
+                    {% endif %}
+                  </select>
+                </div>
+                
+                
+
+                <button class="w-50 btn btn-lg btn-outline-danger my-3" type="submit"> ورود </button>
+                
+              </div>
+                
+
+              </form>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
